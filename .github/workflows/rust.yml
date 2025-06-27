@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up Rust toolchain (if needed)
-      uses: actions-rs/toolchain@v2
+      uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
         target: x86_64-apple-darwin  # 明确指定目标架构为Intel macOS
