@@ -1,0 +1,23 @@
+name: Rust
+
+on:
+  workflow_dispatch
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build
+      run: cargo build --release
+    - name: Upload the release artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: mkalias-macOS
+        path: target/release/mkalias
+    
