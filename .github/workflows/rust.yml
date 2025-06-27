@@ -3,16 +3,19 @@ name: Rust
 on:
   workflow_dispatch
 
-env:
-  CARGO_TERM_COLOR: always
-
 jobs:
   build:
 
-    runs-on: x86_64_monterey
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v4
+    - name: Set up Rust toolchain (if needed)
+      uses: actions-rs/toolchain@v4
+      with:
+        toolchain: stable
+        target: x86_64-apple-darwin  # 明确指定目标架构为Intel macOS
+        override: true
     - name: Build
       run: cargo build --release --target x86_64-apple-darwin
     - name: Upload the release artifact
